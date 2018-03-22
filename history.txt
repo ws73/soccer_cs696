@@ -846,23 +846,19 @@
   846  ls -l
   847  ls
   848  exit
-  849  mysql -u root -p 
-  850  ls
-  851  ll
-  852  cd go
-  853  ll
-  854  cd src/
-  855  ll
-  856  cd github.com/
-  857  ls
-  858  ll
-  859  cd ws73@njit.edu/
-  860  ll
-  861  cd soccer/
+  849  su 
+  850  cd .
+  851  cd ..
+  852  ls -l
+  853  go run main.go 
+  854  clear
+  855  go run main.go 
+  856  clear
+  857  go run main.go
+  858  clear
+  859  go run main.go 
+  860  clear
+  861  go run main.go 
   862  ll
-  863  git init
-  864  git status
-  865  mysqldump -u root -p soccer > backup.sql
-  866  ll
-  867  history
-  868  history > history.txt
+  863  history 
+  864  history > history.txt

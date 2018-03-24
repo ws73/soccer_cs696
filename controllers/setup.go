@@ -4,6 +4,10 @@ import (
 	// Standard library packages
 	"fmt"
 	"net/http"
+	"database/sql"
+
+	// Project based packages
+	"github.com/ws73@njit.edu/soccer/models"
 
 	// Third party package libraries
 	"github.com/julienschmidt/httprouter"
@@ -30,10 +34,39 @@ func setRouterHandlers(router *httprouter.Router) {
 	// home page controller
 	router.GET("/", func(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
-		err := renderTemplate("site.layout", "index.html", w, "")
+		db, err := sql.Open("mysql", "root:support$01@/soccer")
+
+		data := make(map[string]interface{})
 
 		if err != nil {
-			fmt.Printf("Error handling template: %s", err)
+			fmt.Printf("\nError found connecting to the database: %s", err.Error())
+		} else {
+		
+			/*matchModel := models.NewMatchModel(db)
+			results := matchModel.GetAllMatches()
+			fmt.Printf("\nMatch Records: %v", results)*/
+			
+
+			//penaltiesModel := models.NewPenaltiesModel(db)
+			//pResults := penaltiesModel.GetAllPenalties()
+
+                        
+			//coachModel := models.NewCoachModel(db)
+			//coachesResults := coachModel.GetAllCoaches()
+			//fmt.Printf("\nCoach Records: %v", coachesResults)
+							
+			matchSchModel := models.NewMatchSchedulesModel(db)
+			matchSchResults := matchSchModel.GetAllMatchSchedules()
+			//fmt.Printf("\nMatch Schedules Records: %v", matchSchResults)
+
+			data["matchSchResults"] = matchSchResults
 		}
+
+		 err = renderTemplate("site.layout", "index.html", w, data) 
+
+                if err != nil {
+                        fmt.Printf("Error handling template: %s", err)
+                }
+
 	})
 }

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Rendezvous</title>
+<title>SOCCER HOUSE</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="/resources/css/default.css" rel="stylesheet" type="text/css" media="all" />
@@ -38,10 +38,30 @@
 			</div>
 		</div>
 	</div>
-	<div id="banner" class="container"> <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a> </div>
+	<!--<div id="banner" class="container"> <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a> </div>-->
 	<div id="page" class="container">
 		<div id="content">
-			<p>SCORES</p>	
+			<p>SCORES</p>
+			<table style="width:100%;" border="1px">
+				<tr>
+				<th>Team Away</th>
+				<th>Score</th>
+				<th>Team Home</th>
+				<th>Score</th>
+				<th>Date</th>
+				</tr>
+			{{range .scoreResults}}
+				<tr>
+				<td>{{.TeamAway}}</td>
+				<td>{{.TeamAwayScore}}</td>
+				<td>{{.TeamHome}}</td>
+				<td>{{.TeamHomeScore}}</td>
+				<td>{{.Date}}</td>
+				</tr>
+			{{else}}
+				<tr><td colspan="5">No scores to display</td></tr>
+			{{end}}
+			</table>
 		</div>
 	</div>
 </div>

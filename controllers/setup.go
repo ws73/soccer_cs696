@@ -59,6 +59,11 @@ func setRouterHandlers(router *httprouter.Router) {
 			matchSchResults := matchSchModel.GetAllMatchSchedules()
 			//fmt.Printf("\nMatch Schedules Records: %v", matchSchResults)
 
+
+			scoreModel := models.NewScoreModel(db)
+			scoreResults := scoreModel.GetAllScores()
+
+			data["scoreResults"] = scoreResults
 			data["matchSchResults"] = matchSchResults
 		}
 

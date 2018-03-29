@@ -74,4 +74,30 @@ func setRouterHandlers(router *httprouter.Router) {
                 }
 
 	})
+
+	//  list all of the rosters
+	router.GET("/rosters", func(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+
+		db, err := sql.Open("mysql", "root:support$01@/soccer")
+
+		data := make(map[string]interface{})
+
+		if err != nil {
+			fmt.Printf("\nError found connecting to the database: %s", err.Error())
+		} else {
+
+			rostersModel := models.NewRostersModel(db)
+                        rostersResults := rostersModel.GetAllRosters()
+
+			data["rostersResults"] = rostersResults
+
+			err = renderTemplate("site.layout", "rosters.html", w, data)
+
+			if err != nil {
+				fmt.Printf("Error handling template: %s", err)
+			}      
+		}
+		
+	})
+
 }

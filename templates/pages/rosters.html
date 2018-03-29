@@ -1,0 +1,65 @@
+{{define "content"}}
+
+	{{range .rostersResults}}
+		<table style="width:100%; margin-bottom:30px" border="1">
+			<tr>
+				<th colspan="2">{{.TeamName}}</th>
+			</tr>
+			<tr>
+				<th>Head Coach</th>
+				<td>{{.HeadCoach}}</td>
+			</tr>
+			<tr>
+				<th>Assistant Coach</th>
+				<td>{{.AssistantCoach}}</td>
+			</tr>
+			<tr>
+				<th>Player 1</th>
+				<td>{{.Player1}}</td>
+			</tr>
+			<tr>
+				<th>Player 2</th>
+				<td>{{.Player2}}</td>
+			</tr>
+			<tr>
+				<th>Player 3</th>
+				<td>{{.Player3}}</td>
+			</tr>
+			<tr>
+				<th>Player 4</th>
+				<td>{{.Player4}}</td>
+			</tr>
+			<tr>
+				<th>Player 5</th>
+				<td>{{.Player5}}</td>
+			</tr>
+			<tr>
+				<th>Player 6</th>
+				<td>{{.Player6}}</td>
+			</tr>
+			<tr>
+				<th>Player 7</th>
+				<td>{{.Player7}}</td>
+			</tr>
+			<tr>
+				<th>Player 8</th>
+				<td>{{.Player8}}</td>
+			</tr>
+			<tr>
+				<th>Player 9</th>
+				<td>{{.Player9}}</td>
+			</tr>
+			<tr>
+				<th>Player 10</th>
+				<td>{{.Player10}}</td>
+			</tr>
+			<tr>
+				<th>Player 11</th>
+				<td>{{.Player11}}</td>
+			</tr>
+		</table>
+	{{else}}
+		<p> style="font-weight:bold"No rosters to display</p>
+	{{end}}
+
+{{end}}

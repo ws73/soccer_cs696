@@ -16,8 +16,8 @@
 	<div id="header-wrapper">
 		<div id="menu" class="container">
 			<ul>
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Rosters</a></li>
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/rosters">Rosters</a></li>
 				<li><a href="#">About</a></li>
 			</ul>
 		</div>
@@ -38,30 +38,9 @@
 			</div>
 		</div>
 	</div>
-	<!--<div id="banner" class="container"> <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a> </div>-->
 	<div id="page" class="container">
-		<div id="content">
-			<p>SCORES</p>
-			<table style="width:100%;" border="1px">
-				<tr>
-				<th>Team Away</th>
-				<th>Score</th>
-				<th>Team Home</th>
-				<th>Score</th>
-				<th>Date</th>
-				</tr>
-			{{range .scoreResults}}
-				<tr>
-				<td>{{.TeamAway}}</td>
-				<td>{{.TeamAwayScore}}</td>
-				<td>{{.TeamHome}}</td>
-				<td>{{.TeamHomeScore}}</td>
-				<td>{{.Date}}</td>
-				</tr>
-			{{else}}
-				<tr><td colspan="5">No scores to display</td></tr>
-			{{end}}
-			</table>
+		<div id="content" style="margin: 0 auto; text-align:center; width: 70%;">
+			{{template "content" .}}
 		</div>
 	</div>
 </div>

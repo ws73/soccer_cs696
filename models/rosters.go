@@ -12,16 +12,27 @@ type RostersRecord struct{
 	HeadCoach string
 	AssistantCoach string
 	Player1 string
+	Player1_ID int
 	Player2 string
+	Player2_ID int
 	Player3 string
+	Player3_ID int
 	Player4 string
+	Player4_ID int
 	Player5 string
+	Player5_ID int
 	Player6 string
+	Player6_ID int
 	Player7 string
+	Player7_ID int
 	Player8 string
+	Player8_ID int
 	Player9 string
+	Player9_ID int
 	Player10 string
+	Player10_ID int
 	Player11 string
+	Player11_ID int
 }
 
 // type RostersModel represents the model table type
@@ -44,17 +55,17 @@ func (m *RostersModel) GetAllRosters() []RostersRecord{
 		t.name as team_name,
 		CONCAT(c.first_name, ' ', c.last_name) as head_coach,
 		CONCAT(c2.first_name, ' ', c2.last_name) as assistant_coach,
-		CONCAT(p1.first_name, ' ', p1.last_name) as p1,
-		CONCAT(p2.first_name, ' ', p2.last_name) as p2,
-		CONCAT(p3.first_name, ' ', p3.last_name) as p3,
-		CONCAT(p4.first_name, ' ', p4.last_name) as p4,
-		CONCAT(p5.first_name, ' ', p5.last_name) as p5,
-		CONCAT(p6.first_name, ' ', p6.last_name) as p6,
-		CONCAT(p7.first_name, ' ', p7.last_name) as p7,
-		CONCAT(p8.first_name, ' ', p8.last_name) as p8,
-		CONCAT(p9.first_name, ' ', p9.last_name) as p9,
-		CONCAT(p10.first_name, ' ', p10.last_name) as p10,
-		CONCAT(p11.first_name, ' ', p11.last_name) as p11
+		CONCAT(p1.first_name, ' ', p1.last_name) as p1, p1.id as p1_id,
+		CONCAT(p2.first_name, ' ', p2.last_name) as p2, p2.id as p2_id,
+		CONCAT(p3.first_name, ' ', p3.last_name) as p3, p3.id as p3_id,
+		CONCAT(p4.first_name, ' ', p4.last_name) as p4, p4.id as p4_id,
+		CONCAT(p5.first_name, ' ', p5.last_name) as p5, p5.id as p5_id,
+		CONCAT(p6.first_name, ' ', p6.last_name) as p6, p6.id as p6_id,
+		CONCAT(p7.first_name, ' ', p7.last_name) as p7, p7.id as p7_id,
+		CONCAT(p8.first_name, ' ', p8.last_name) as p8, p8.id as p8_id,
+		CONCAT(p9.first_name, ' ', p9.last_name) as p9, p9.id as p9_id,
+		CONCAT(p10.first_name, ' ', p10.last_name) as p10, p10.id as p10_id,
+		CONCAT(p11.first_name, ' ', p11.last_name) as p11, p11.id as p11_id
 	FROM rosters r
 	JOIN teams t ON r.team_id = t.id
 	JOIN players p1 ON p1.id = r.player_1
@@ -76,20 +87,31 @@ func (m *RostersModel) GetAllRosters() []RostersRecord{
 	for rows.Next() {
 		var record RostersRecord
 		err = rows.Scan(
-			&record.TeamName, 
-			&record.HeadCoach, 
-			&record.AssistantCoach, 
-			&record.Player1, 
-			&record.Player2, 
-			&record.Player3, 
-			&record.Player4, 
-			&record.Player5, 
-			&record.Player6, 
-			&record.Player7, 
-			&record.Player8, 
-			&record.Player9, 
-			&record.Player10, 
-			&record.Player11, 
+				&record.TeamName, 
+				&record.HeadCoach, 
+				&record.AssistantCoach, 
+				&record.Player1, 
+				&record.Player1_ID, 
+				&record.Player2, 
+				&record.Player2_ID, 
+				&record.Player3, 
+				&record.Player3_ID, 
+				&record.Player4, 
+				&record.Player4_ID, 
+				&record.Player5, 
+				&record.Player5_ID, 
+				&record.Player6, 
+				&record.Player6_ID, 
+				&record.Player7, 
+				&record.Player7_ID, 
+				&record.Player8, 
+				&record.Player8_ID, 
+				&record.Player9, 
+				&record.Player9_ID, 
+				&record.Player10, 
+				&record.Player10_ID, 
+				&record.Player11, 
+				&record.Player11_ID, 
 			)
 
 		if err != nil {

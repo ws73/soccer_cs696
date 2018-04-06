@@ -694,3 +694,26 @@ ul.contact li a:before
 	padding-top: 0px;
 	border-top: none;
 }
+
+/* TABLE */
+table {
+	width: 100%;
+	margin-bottom: 50px;
+	border: 1px solid #FFC153;
+	font-size: 20px;
+}
+
+table tr th {
+}
+
+table tr td {
+	border-collapse: collapse;
+}
+
+table caption {
+	font-size: 40px;
+	padding: 10px 20px;
+	font-weight: bold;
+	color: white;
+	background-color: #FFC153;
+}

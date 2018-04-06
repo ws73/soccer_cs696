@@ -1,10 +1,8 @@
 {{define "content"}}
 
 	{{range .rostersResults}}
-		<table style="width:100%; margin-bottom:30px" border="1">
-			<tr>
-				<th colspan="2">{{.TeamName}}</th>
-			</tr>
+		<table>
+			<caption>{{.TeamName}}</caption>
 			<tr>
 				<th>Head Coach</th>
 				<td>{{.HeadCoach}}</td>
@@ -15,51 +13,51 @@
 			</tr>
 			<tr>
 				<th>Player 1</th>
-				<td>{{.Player1}}</td>
+				<td><a href="/players/{{.Player1_ID}}">{{.Player1}}</td>
 			</tr>
 			<tr>
 				<th>Player 2</th>
-				<td>{{.Player2}}</td>
+				<td><a href="/players/{{.Player2_ID}}">{{.Player2}}</td>
 			</tr>
 			<tr>
 				<th>Player 3</th>
-				<td>{{.Player3}}</td>
+				<td><a href="/players/{{.Player3_ID}}">{{.Player3}}</td>
 			</tr>
 			<tr>
 				<th>Player 4</th>
-				<td>{{.Player4}}</td>
+				<td><a href="/players/{{.Player4_ID}}">{{.Player4}}</td>
 			</tr>
 			<tr>
 				<th>Player 5</th>
-				<td>{{.Player5}}</td>
+				<td><a href="/players/{{.Player5_ID}}">{{.Player5}}</td>
 			</tr>
 			<tr>
 				<th>Player 6</th>
-				<td>{{.Player6}}</td>
+				<td><a href="/players/{{.Player6_ID}}">{{.Player6}}</td>
 			</tr>
 			<tr>
 				<th>Player 7</th>
-				<td>{{.Player7}}</td>
+				<td><a href="/players/{{.Player7_ID}}">{{.Player7}}</td>
 			</tr>
 			<tr>
 				<th>Player 8</th>
-				<td>{{.Player8}}</td>
+				<td><a href="/players/{{.Player8_ID}}">{{.Player8}}</td>
 			</tr>
 			<tr>
 				<th>Player 9</th>
-				<td>{{.Player9}}</td>
+				<td><a href="/players/{{.Player9_ID}}">{{.Player9}}</td>
 			</tr>
 			<tr>
 				<th>Player 10</th>
-				<td>{{.Player10}}</td>
+				<td><a href="/players/{{.Player10_ID}}">{{.Player10}}</td>
 			</tr>
 			<tr>
 				<th>Player 11</th>
-				<td>{{.Player11}}</td>
+				<td><a href="/players/{{.Player11_ID}}">{{.Player11}}</td>
 			</tr>
 		</table>
 	{{else}}
-		<p> style="font-weight:bold"No rosters to display</p>
+		<p style="font-weight:bold">No rosters to display</p>
 	{{end}}
 
 {{end}}

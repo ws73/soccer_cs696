@@ -1,0 +1,28 @@
+{{define "content"}}
+
+	{{with .playerInfo}}
+
+		<table>
+			<caption>PLAYER INFORMATION</caption>
+			<tr>
+				<td colspan="2">{{.FirstName}} {{.MiddleName}} {{.LastName}}</td>
+			</tr>
+			<tr>
+				<th>Position</th>
+				<td>{{.Position}}</td>
+			</tr>
+			<tr>
+				<th>Date Of Birth</th>
+				<td>{{.DateOfBirth}}</td>
+			</tr>
+		</table>
+
+	{{else}}
+		{{if .err}}
+			<p style="color:red">{{.err}}</p>
+		{{else}}
+			<p style="font-weight:bold">No player information found</p>
+		{{end}}
+	{{end}}
+
+{{end}}

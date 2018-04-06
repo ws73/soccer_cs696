@@ -25,11 +25,11 @@
 		<div id="header" class="container">
 			<div id="logo">
 				<h1><a href="#">SOCCER HOUSE</a></h1>
-				<p class="triangle-isosceles">NEXT GAME <a href="http://templated.co" rel="nofollow">BELOW</a></p>
+				<p class="triangle-isosceles">NEXT GAME BELOW</p>
 			{{with .matchSchResults}}
 				{{$firstRecord := index . 0}}
 				<div>
-					{{$firstRecord.TeamAway}} VS {{$firstRecord.TeamHome}}
+					<strong>{{$firstRecord.TeamAway}} VS {{$firstRecord.TeamHome}}</strong>
 					<p>Date: {{$firstRecord.Date}}</p>
 				</div>
 			{{else}}

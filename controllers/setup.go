@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"database/sql"
+	"strconv"
 
 	// Project based packages
 	"github.com/ws73@njit.edu/soccer/models"
@@ -89,7 +90,11 @@ func setRouterHandlers(router *httprouter.Router) {
 			rostersModel := models.NewRostersModel(db)
                         rostersResults := rostersModel.GetAllRosters()
 
+			matchSchModel := models.NewMatchSchedulesModel(db)
+			matchSchResults := matchSchModel.GetAllMatchSchedules()
+
 			data["rostersResults"] = rostersResults
+			data["matchSchResults"] = matchSchResults
 
 			err = renderTemplate("site.layout", "rosters.html", w, data)
 
@@ -100,4 +105,54 @@ func setRouterHandlers(router *httprouter.Router) {
 		
 	})
 
+	//  Show player info
+	router.GET("/players/:id", func(w http.ResponseWriter, r *http.Request, params httprouter.Params){
+
+		db, err := sql.Open("mysql", "root:support$01@/soccer")
+
+                data := make(map[string]interface{})
+
+                if err != nil {
+                        fmt.Printf("\nError found connecting to the database: %s", err.Error())
+				
+			data["err"] = "Unable to locate player"
+                } else {
+
+			idStr := params.ByName("id")
+			id, err := strconv.ParseInt(idStr, 10, 64)
+
+
+			if err == nil {
+				playersModel := models.NewPlayerModel(db)
+				playerInfo, err := playersModel.GetPlayer(id)
+				data["playerInfo"] = playerInfo
+
+				if err != nil {
+					data["err"] = "Unable to locate player - invalid info may have been provided"
+				}
+			}else{
+
+				if err != nil {
+					data["err"] = "Unable to locate player - invalid info may have been provided"
+				}
+
+			}
+			
+
+		}	
+
+		matchSchModel := models.NewMatchSchedulesModel(db)
+		matchSchResults := matchSchModel.GetAllMatchSchedules()
+
+		data["matchSchResults"] = matchSchResults
+
+		err = renderTemplate("site.layout", "player.html", w, data)
+
+		if err != nil {
+			fmt.Printf("Error handling template: %s", err)
+		}    
+
+	})
+
 }
+
